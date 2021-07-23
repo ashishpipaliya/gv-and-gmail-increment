@@ -24,7 +24,7 @@ app.get('/gv/:kachra', (req, res) => {
         let gvs = "";
         let result = kachra.match(pattern);
         result.forEach((gv) => {
-            gvs += `${gv}` + "<br>";
+            gvs += `${gv}<br>`;
         })
         res.send(gvs);
     } catch (e) {
@@ -39,7 +39,7 @@ app.get('/plus/:email/:from/:to', (req, res) => {
         const to = req.params.to;
         text = "";
         for (var i = from; i <= to; i++) {
-            text += email + "+" + i + "@gmail.com\n"
+            text += email + "+" + i + "@gmail.com<br>"
         }
         res.send(text);
     } catch (e) {
