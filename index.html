@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="lrmargin">
+      <form action="http://localhost:5000/gv" method="post">
+        <legend>gv extract</legend>
+        <textarea
+          id="kachra"
+          type="text"
+          name="kachra"
+          placeholder="copied email"
+          required
+        ></textarea
+        ><br />
+        <input type="submit" value="filter" />
+      </form>
+    </div>
+    <div class="lrmargin">
+      <form action="http://localhost:5000/plus" method="post">
+        <legend>gmail increment</legend>
+        <input
+          id="email"
+          type="text"
+          name="email"
+          placeholder="email without @gmail.com"
+          required
+        /><br />
+        <input
+          id="from"
+          type="text"
+          name="from"
+          placeholder="from"
+          required
+        /><input
+          id="to"
+          type="text"
+          name="to"
+          placeholder="to"
+          required
+        /><br />
+
+        <input type="submit" value="generate" />
+      </form>
+    </div>
+    <a
+      href="https://drive.google.com/file/d/1iQQXLUIEh_r2-zPyFPwUroL3lLijECyl/view?usp=sharing"
+      >Try out my app to verify amazon otp. Just follow in-app instructions to
+      get started</a
+    >
+
+    <div class="row">
+      <div class="column">
+        <img
+          src="https://user-images.githubusercontent.com/32923529/126757127-46b5a221-3803-4084-9f5f-69403943f20b.jpg"
+          style="width:70%"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="https://user-images.githubusercontent.com/32923529/126757125-eb349c68-2e0b-40b7-8ca7-628bab11dbfc.jpg"
+          style="width:70%"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="https://user-images.githubusercontent.com/32923529/126757129-cf7bc8d2-c5ba-4c9c-8152-d8bb65eb777c.jpg"
+          style="width:70%"
+        />
+      </div>
+    </div>
+  </body>
+
+  <style>
+    a:link,
+    a:visited {
+      background-color: white;
+      color: black;
+      display: block;
+      border: 2px solid green;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:active {
+      background-color: green;
+      color: white;
+    }
+
+    input[type='text'],
+    textarea[type='text'] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea[type='text'] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      height: 100px;
+      box-sizing: border-box;
+    }
+
+    input[type='submit'] {
+      width: 100%;
+      background-color: #00bfff;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type='submit']:hover {
+      background-color: #00bfdd;
+    }
+
+    .lrmargin {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+      margin: 20px;
+      margin-left: 30%;
+      margin-right: 30%;
+      margin-bottom: 100px;
+    }
+    body {
+      margin: 20%;
+      margin-top: 0%;
+    }
+    .row {
+      display: flex;
+    }
+
+    .column {
+      flex: 25%;
+      text-align: center;
+      padding: 5px;
+    }
+  </style>
+</html>

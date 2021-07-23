@@ -1,25 +1,26 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 5000
+var bodyParser = require('body-parser')
+
+app.use(
+    express.urlencoded({
+        limit: '50mb',
+        extended: true,
+        parameterLimit:5000000
+    })
+)
+app.use(express.json())
+app.use( bodyParser.json({limit: '50mb'}) );
 
 app.get('/', (req, res) => {
-    const htu = `
-    <h3>To extract gvs,</h3>
-    http://gvgb.herokuapp.com/gv/copied-email-here................dsdasdsdadsasd.asdad.dada.d.ad.ad.a<br>
-
-    <br><br><br><br>
-    <h3>To increment gmail,</h3>
-    http://gvgb.herokuapp.com/plus/gmailaddr/1/100<br>
-    where gmailaddr is from gmailaddr@gmail.com without @gmail.com and 1 - 100 is limit.<br><br>
-
-    simple!
-`;
-    res.send(htu)
+    res.sendFile(__dirname + '/index.html')
 })
 
-app.get('/gv/:kachra', (req, res) => {
+app.post('/gv', (req, res) => {
+const kachra = req.body.kachra;
     try {
-        const kachra = req.params.kachra.trim();
+        const kachra = req.body.kachra;
         var pattern = /[A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9]-[A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9]-[A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9]/gi;
         let gvs = "";
         let result = kachra.match(pattern);
@@ -28,15 +29,20 @@ app.get('/gv/:kachra', (req, res) => {
         })
         res.send(gvs);
     } catch (e) {
+        console.log(e);
         res.send('something is really wrong');
     }
 })
 
-app.get('/plus/:email/:from/:to', (req, res) => {
+app.post('/plus', (req, res) => {
+
+  console.log(req.body);
+
     try {
-        const email = req.params.email;
-        const from = req.params.from;
-        const to = req.params.to;
+        const email = req.body.email;
+        const from = req.body.from;
+        const to = req.body.to;
+        
         text = "";
         for (var i = from; i <= to; i++) {
             text += email + "+" + i + "@gmail.com<br>"
@@ -47,7 +53,10 @@ app.get('/plus/:email/:from/:to', (req, res) => {
     }
 })
 
-
+// 404 route
+app.get('*', function (req, res) {
+    res.send('Error 404. Page Not Found')
+});
 
 app.listen(port, () => console.log('> Server is up and running on port : ' + port))
 
