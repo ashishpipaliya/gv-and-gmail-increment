@@ -64,7 +64,7 @@ app.post('/tokem', (req, res) => {
             var arr2 = [];
 
             let result1 = kachra.match(pattern1);
-            result.forEach((gv) => {
+            result1.forEach((gv) => {
                 arr.push(gv)
             })
 
