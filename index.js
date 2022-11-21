@@ -55,9 +55,9 @@ app.post('/plus', (req, res) => {
 
 app.post('/tokem', (req, res) => {
         try {
-            const kachra = req.body.kachra;
-            var pattern1 = /[0-9]{9}/gi;
-            var pattern2 = /[P][0-9]{2}[-][0-9]{7}[-][0-9]{7}/gi;
+            const kachra = req.body.tokenmails;
+            var pattern1 = /[0-9]{9}/g;
+            var pattern2 = /[P][0-9]{2}[-][0-9]{7}[-][0-9]{7}/g;
             let tokens = "";
 
             var arr = [];
