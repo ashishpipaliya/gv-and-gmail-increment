@@ -53,6 +53,38 @@ app.post('/plus', (req, res) => {
     }
 })
 
+app.post('/tokem', (req, res) => {
+        try {
+            const kachra = req.body.kachra;
+            var pattern1 = /[0-9]{9}/gi;
+            var pattern2 = /[P][0-9]{2}[-][0-9]{7}[-][0-9]{7}/gi;
+            let tokens = "";
+
+            var arr = [];
+            var arr2 = [];
+
+            let result1 = kachra.match(pattern1);
+            result.forEach((gv) => {
+                arr.push(gv)
+            })
+
+            let result2 = kachra.match(pattern2);
+            result2.forEach((gv) => {
+                arr2.push(gv)
+            })
+
+            for(var i =0; i<arr.length; i++){
+                tokens+= `${arr[i]}-${arr2[i]}`
+            }
+            console.log(tokens);
+            res.send(tokens);
+        } catch (e) {
+            console.log(e);
+            res.send('something is really wrong');
+        }
+    })
+
+
 // 404 route
 app.get('*', function (req, res) {
     res.send('Error 404. Page Not Found')
