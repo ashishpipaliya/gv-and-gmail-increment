@@ -74,7 +74,7 @@ app.post('/tokem', (req, res) => {
             })
 
             for(var i =0; i<arr.length; i++){
-                tokens+= `<p>${arr[i]}-${arr2[i]}</p></br>`;
+                tokens+= `<p>${arr[i]}  ${arr2[i]}</p></br>`;
             }
             res.send(tokens);
         } catch (e) {
