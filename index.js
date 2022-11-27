@@ -97,7 +97,7 @@ app.post('/tokem', (req, res) => {
       .limit(1).then(data=>{
         console.log(data);
         if(data){
-        var html  = `<p id="otp">${data.data[0].name}</p><p id="phone">${data.data[0].phone_number}</p><p id="otp">${data.data[0].otp}</p>`;
+        var html  = `<p id="otp">${data.data[0]?.name}</p><p id="phone">${data.data[0]?.phone_number}</p><p id="otp">${data.data[0]?.otp}</p>`;
             res.send(html)
         }else{
             res.send(`<p id="phone">${e ?? 'something went wrong'}</p><br>`)
