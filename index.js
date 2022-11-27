@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 5000
 var bodyParser = require('body-parser')
+const { createClient } = require('@supabase/supabase-js')
 
 app.use(
     express.urlencoded({
@@ -74,7 +75,7 @@ app.post('/tokem', (req, res) => {
             })
 
             for(var i =0; i<arr.length; i++){
-                tokens+= `<p>${arr[i]}  ${arr2[i]}</p></br>`;
+                tokens+= `<p>${arr[i]}  ${arr2[i]}</p>`;
             }
             res.send(tokens);
         } catch (e) {
@@ -83,6 +84,26 @@ app.post('/tokem', (req, res) => {
         }
     })
 
+
+    app.get('/sim/:name', (req, res) => {
+     var name = req.params.name;
+     const supabase = createClient(
+        'https://txzntoakmtfnztyfkgay.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNTEzODQ1MSwiZXhwIjoxOTUwNzE0NDUxfQ.NdoQHgTEm7qUtLi00gCAfQX15exhIg3UBnb58enbaxE'
+      )
+      supabase
+      .from('amazon-otp')
+      .select().eq('name' , name )
+      .limit(1).then(data=>{
+        console.log(data);
+        if(data){
+        var html  = `<p id="otp">${data.data[0].name}</p><p id="phone">${data.data[0].phone_number}</p><p id="otp">${data.data[0].otp}</p>`;
+            res.send(html)
+        }else{
+            res.send(`<p id="phone">${e ?? 'something went wrong'}</p><br>`)
+        }
+      })
+    })
 
 // 404 route
 app.get('*', function (req, res) {
