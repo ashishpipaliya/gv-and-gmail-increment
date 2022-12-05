@@ -22,7 +22,7 @@ app.post('/gv', (req, res) => {
 const kachra = req.body.kachra;
     try {
         const kachra = req.body.kachra;
-        var pattern = /[A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9]-[A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9]-[A-Z|0-9][A-Z|0-9][A-Z|0-9][A-Z|0-9]/gi;
+        var pattern = /[A-Z|0-9]{4}-[A-Z|0-9]{6}-[A-Z|0-9]{3,4}/gi;
         let gvs = "";
         let result = kachra.match(pattern);
         result.forEach((gv) => {
